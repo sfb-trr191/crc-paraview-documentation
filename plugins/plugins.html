@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRC/TRR 191</title>
+  <link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+<body>
+  <header>
+    <h1>Symplectic Structures in Geometry, Algebra and Dynamics</h1>
+  </header>
+  
+  <div class="banner"></div>
+  
+  <nav>
+    <ul>
+      <li>
+        <a href="../paraview/paraview.html">Paraview</a>
+        <ul>
+          <li><a href="../paraview/linux.html">Linux</a></li>
+          <li><a href="../paraview/mac.html">Mac</a></li>
+          <li><a href="../paraview/windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Plugins</a>
+        <ul>
+          <li><a href="linux.html">Linux</a></li>
+          <li><a href="mac.html">Mac</a></li>
+          <li><a href="windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../build/build.html">Build</a>
+        <ul>
+          <li><a href="../build/linux.html">Linux</a></li>
+          <li><a href="../build/mac.html">Mac</a></li>
+          <li><a href="../build/windows.html">Windows</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="content">
+    <h2>Paraview Plugins</h2>
+    <p>We provide a few Paraview Plugins from our <a href="https://vcgitlab.iwr.uni-heidelberg.de/lmarks/plugins"> Gitlab Repository</a>. The documentation can be found on the repository side. The table shows which plugins provided for which operating system and version of paraview:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>5.10 - Linux</th>
+          <th>5.11 - Linux</th>
+          <th>5.10 - Mac</th>
+          <th>5.11 - Mac</th>
+          <th>5.10 - Windows</th>
+          <th>5.11 - Windows</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>VCG - Ridge Line</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>X</td>
+          <td>X</td>
+          <td>X</td>
+          <td>X</td>
+        </tr>
+        <tr>
+          <td>VCG - Ridge Surface</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>X</td>
+          <td>X</td>
+          <td>X</td>
+          <td>X</td>
+        </tr>
+        <tr>
+          <td>Imagedata to UnstructuredGrid</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+        </tr>
+        <tr>
+          <td>Vector Field Generating</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+        </tr>
+        <tr>
+          <td>Fibration</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+        </tr>
+        <tr>
+          <td>Plane Field Source Filter</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+        </tr>
+        <tr>
+          <td>Bivariant</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+        </tr>
+        <tr>
+          <td>vtkMarchingCubes</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+          <td>Ok</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+    </div>
+    <div class="toggle-box">
+      <button id="toggleButton">Advanced Modus</button>
+      <div id="additionalInfo">
+        <h2>
+          Building Plugins
+        </h3>
+        <h3>
+          VTK Plugins
+        </h3>
+        There is a very easy way to intigrate VTK objects like vtkDelaunay2D or vtkMarchingCubes into paraview. You need to expose a vtk Object using a .xml file. For an example we will use vtkMarchingCubes. Open a file "MarchingCubes.xml" and add the lines
+        <code>
+        &lt;source lang="xml"&gt; &lt;ServerManagerConfiguration&gt;
+          &lt;ProxyGroup name="filters"&gt;
+            &lt;SourceProxy name="MarchingCubes" class="vtkMarchingCubes" label="My Marching Cubes"&gt;
+              &lt;Documentation
+                 long_help="vtkMarchingCubes is a filter that takes as input a volume 
+                            (e.g., 3D structured point set) and generates on output 
+                            one or more isosurfaces. One or more contour values must 
+                            be specified to generate the isosurfaces. Alternatively, 
+                            you can specify a min/max scalar range and the number of 
+                            contours to generate a series of evenly spaced contour 
+                            values."
+                 short_help="generate isosurface(s) from volume"&gt;
+              &lt;/Documentation&gt;
+              &lt;InputProperty
+                 name="Input"
+                 command="SetInputConnection"&gt;
+                    &lt;ProxyGroupDomain name="groups"&gt;
+                      &lt;Group name="sources"/&gt;
+                      &lt;Group name="filters"/&gt;
+                    &lt;/ProxyGroupDomain&gt;
+                    &lt;DataTypeDomain name="input_type"&gt;
+                      &lt;DataType value="vtkDataSet"/&gt;
+                    &lt;/DataTypeDomain&gt;
+              &lt;/InputProperty&gt;
+          
+            &lt;/SourceProxy&gt;
+          &lt;/ProxyGroup&gt;
+        &lt;/ServerManagerConfiguration&gt; &lt;/source&gt;
+        </code> 
+        <p>This will load the plugin but not really run it, that is because we need to call the functions needed for vtkMarchingCubes, we can add functions and GUI inputs by adding a few lines after &lt;/InputProperty&gt;:</p>
+        <code>
+          &lt;IntVectorProperty name="Contour Values"
+                             command="SetValue"
+                             number_of_elements="2"
+                             default_values="0 1"&gt;
+          &lt;/IntVectorProperty&gt;
+        </code>
+        <p>You can find more details on the different datatypes on the <a href="https://www.paraview.org/Wiki/ParaView/Plugin_HowTo#Adding_GUI_Parameters"> Paraview Website</a>. We already provided the vtkMarchingCubes in the plugin repository.
+          <h3>
+            Python
+          </h3>
+          To build a Python plugin for paraview you need to generate only a simple python script. Here we show an example for the Imagedata to UnstructuredGrid plugin "ImageData2UnstructuredGrid.py":
+          <code>
+    import vtk
+    import numpy as np
+    
+    from vtkmodules.util.vtkAlgorithm import VTKPythonAlgorithmBase
+    from vtkmodules.vtkCommonDataModel import (vtkStructuredGrid, vtkDataSet, VTK_VERTEX)
+    from vtkmodules.numpy_interface import dataset_adapter as dsa
+    
+    from paraview.util.vtkAlgorithm import smproxy, smproperty, smdomain
+    
+    from paraview.util import SetOutputWholeExtent
+    
+    @smproxy.filter(label="Imagedata to UnstructuredGrid")
+    @smproperty.input(name="Input", port_index=0)
+    
+    class ImageData2UnstructuredGrid(VTKPythonAlgorithmBase):
+        def __init__(self):
+            VTKPythonAlgorithmBase.__init__(self, nInputPorts=1, nOutputPorts=1, outputType='vtkUnstructuredGrid')
+            self.unstructuredgrid = vtk.vtkUnstructuredGrid()    
+            self.factor = 10
+            
+        def RequestData(self, request, inputs, outputData):
+            input_data = self.GetInputDataObject(0, 0)
+            spacing = input_data.GetSpacing()
+            dims = input_data.GetDimensions()
+    
+    
+            dims2 = input_data.GetDimensions()
+            points = vtk.vtkPoints()
+            scalars = vtk.vtkDoubleArray()
+            scalars.SetNumberOfComponents(1)
+            scalars.SetName("scalars")
+    
+            # Get the number of arrays in the point data
+            pointData = input_data.GetPointData()            
+            image_scalars = pointData.GetScalars()
+    
+            scalars = vtk.vtkDoubleArray()
+            scalars.SetNumberOfComponents(1)
+            scalars.SetName("scalars")
+    
+            end_point_x = dims2[0] * spacing[0]
+            end_point_y = dims2[1] * spacing[1]
+            end_point_z = dims2[2] * spacing[2]
+    
+    
+            dims = [int(dims2[0] / self.factor), int(dims2[1] / self.factor), int(dims2[2] / self.factor)]
+    
+            x = np.linspace(0, end_point_x, dims[0], endpoint=False)
+            y = np.linspace(0, end_point_y, dims[1], endpoint=False)
+            z = np.linspace(0, end_point_z, dims[2], endpoint=False)
+    
+            cells = vtk.vtkCellArray()
+    
+            hex = vtk.vtkHexahedron()
+    
+            counter = 0
+    
+            for k in range(0, dims[2]):
+                for j in range(0, dims[1]):
+                    for i in range(0, dims[0]):
+                        points.InsertNextPoint(x[i], y[j], z[k])
+                        index = i*self.factor + (j*self.factor * dims2[0]) + (k*self.factor * dims2[0] * dims2[1])
+                        scalars.InsertTuple1(counter, image_scalars.GetTuple(index)[0])
+                        counter += 1
+                        if k < dims[2] - 1 and j < dims[1] - 1 and i < dims[0] - 1:
+                            p_000 = i + (j * dims[0]) + (k * dims[0] * dims[1])
+                            p_001 = i + (j * dims[0]) + ((k + 1) * dims[0] * dims[1])
+                            p_010 = i + ((j + 1) * dims[0]) + (k * dims[0] * dims[1])
+                            p_011 = i + ((j + 1) * dims[0]) + ((k + 1) * dims[0] * dims[1])
+                            p_100 = i + 1 + (j * dims[0]) + (k * dims[0] * dims[1])
+                            p_101 = i + 1 + (j * dims[0]) + ((k + 1) * dims[0] * dims[1])
+                            p_110 = i + 1 + ((j + 1) * dims[0]) + (k * dims[0] * dims[1])
+                            p_111 = i + 1 + ((j + 1) * dims[0]) + ((k + 1) * dims[0] * dims[1])
+                            hex.GetPointIds().SetId(0, p_000)
+                            hex.GetPointIds().SetId(1, p_100)
+                            hex.GetPointIds().SetId(2, p_110)
+                            hex.GetPointIds().SetId(3, p_010)
+                            hex.GetPointIds().SetId(4, p_001)
+                            hex.GetPointIds().SetId(5, p_101)
+                            hex.GetPointIds().SetId(6, p_111)
+                            hex.GetPointIds().SetId(7, p_011)
+                            
+                            cells.InsertNextCell(hex)
+                    
+            self.unstructuredgrid.SetPoints(points)
+    
+            self.unstructuredgrid.GetPointData().SetScalars(scalars)
+    
+            self.unstructuredgrid.SetCells(vtk.VTK_HEXAHEDRON, cells)
+            
+            output1 = dsa.WrapDataObject(vtk.vtkUnstructuredGrid.GetData(outputData, 0)) 
+    
+            output1.ShallowCopy(self.unstructuredgrid)
+            return 1
+        
+        @smproperty.xml("""<IntVectorProperty
+                        name="Scale"
+                        command="SetScale"
+                        number_of_elements="1"
+                        default_values="10">
+                        </IntVectorProperty>""")
+        def SetScale(self, scale) -> None:
+            self.factor = scale
+            self.Modified()
+          </code>
+        <h3>
+          C++ (Binary)
+        </h3>
+        <p>
+        To build a C++ plugin in paraview you need to generate a binary plugin. This can be archived by building paraview yourself, a tutorial is found in the <a href="../build/build.html">build</a> section. For Linux there is an easy <a href="https://gitlab.kitware.com/paraview/paraview-easy-plugin-builder">plugin builder</a> provided by Mathieu Westphal (Kitware).
+        </p>
+        <p>
+          For an easy example we will develop a Plugin that generates a plane field filter. First we need to write the c++ files "vtkPlaneFieldSource.h" and "vtkPlaneFieldSource.gcc"
+        </p>
+      </div>
+  
+      <script>
+          const toggleButton = document.getElementById('toggleButton');
+          const additionalInfo = document.getElementById('additionalInfo');
+  
+          toggleButton.addEventListener('click', () => {
+              if (additionalInfo.style.display === 'none') {
+                  additionalInfo.style.display = 'block';
+              } else {
+                  additionalInfo.style.display = 'none';
+              }
+          });
+      </script>
+    </div>
+
+    </html>

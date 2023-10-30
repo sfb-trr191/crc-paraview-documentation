@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRC/TRR 191</title>
+  <link rel="stylesheet" type="text/css" href="../style/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@2.1.4/marked.min.js"></script>
+  <script>
+    // Define an array of terminal outputs
+    const terminalOutputs = [
+    `user@computer:~$ sudo apt install curl gawk git -y`,
+    `user@computer:~$ mkdir programms
+user@computer:~$ cd programms
+user@computer:~/programms$ git clone --branch Linux https://vcgitlab.iwr.uni-heidelberg.de/lmarks/sfb-paraview.git`,
+    `user@computer:~/programms/sfb-paraview$ ./paraview`,
+    `user@computer:~$ paraview`,
+    `user@computer:~/programms/sfb-paraview$ ./uninstall`,
+      `user@computer:~$ mkdir hello_world
+user@computer:~$ ls
+hello_world`,
+      `user@computer:~$ echo "Hello from the second box!"
+user@computer:~$ ls
+file.txt`,
+      // Add more terminal outputs here
+    ];
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Symplectic Structures in Geometry, Algebra and Dynamics</h1>
+  </header>
+  
+  <div class="banner"></div>
+  
+  <nav>
+    <ul>
+      <li>
+        <a href="paraview.html">Paraview</a>
+        <ul>
+          <li><a href="#">Linux</a></li>
+          <li><a href="mac.html">Mac</a></li>
+          <li><a href="windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../plugins/plugins.html">Plugins</a>
+        <ul>
+          <li><a href="../plugins/linux.html">Linux</a></li>
+          <li><a href="../plugins/mac.html">Mac</a></li>
+          <li><a href="../plugins/windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../build/build.html">Build</a>
+        <ul>
+          <li><a href="../build/linux.html">Linux</a></li>
+          <li><a href="../build/mac.html">Mac</a></li>
+          <li><a href="../build/windows.html">Windows</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="content">
+    <h2>Paraview for Linux</h2>
+    <p>This is a programm that automatically installs a desired version on paraview on your linux computer and generates a bash command to run it from terminal. The programm also automatically checks for updates on new <a href="../plugins/linux.html"> plugins</a> provided by us for the linux version of paraview.</p>
+    <h3>Video Tutorial</h3>
+    <video controls width="640" height="360">
+      <source src="../images/tutorial_linux.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+    <h3>Requirments</h3>
+    <p>To use the paraview script you first need to install necessary packages on you linux system, otherwise the script will not run</p>
+    <ul>
+      <li>curl</li>
+      <li>gawk</li>
+      <li>GIT</li>
+    </ul>
+    <p>you can install these packages on Ubuntu by using the terminal command</p>
+    <div class="container">
+      <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+    </div>
+
+    <h3>Installation</h3>
+    
+    <p>Download the <a href="https://vcgitlab.iwr.uni-heidelberg.de/lmarks/sfb-paraview/-/tree/Linux?ref_type=heads">git project</a> by using the command in a designated folder (we recommend to generate a programms folder)</p>
+    <div class="container">
+      <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+    </div>
+
+    <p>When the git project is downloaded, open the folder and execute the bash script. Follow the instructions to install Paraview on your system. We recommend using the paraview version MPI 5.11.1. This process might take a while to download all the necessary packages depending on your internet connection.</p>
+    <div class="container">
+      <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+    </div>
+    <p>After you installed paraview successfully, you should be able to run paraview from anywhere by running the command</p>
+    <div class="container">
+      <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+    </div>
+  <h3>
+    Uninstall
+  </h3>
+  If you want another version of paraview you can just duplicate the project and change the command name like mentioned earlier, or uninstall paraview by running the following script. Please note if you want to delete paraview completely, run the uninstall script first before deleting the project folder.
+  <div class="container">
+    <pre id="dynamic-box-1" class="terminal"></pre>
+  </div>
+  </div>
+  <div class="toggle-box">
+    <button id="toggleButton">Advanced Modus</button>
+    <div id="additionalInfo">
+      <p>If you want to use another name for opening paraview, you first have to uninstall paraview (if installed) and change a few lines in bash script "paraview" with your new command #NEW_COMMAND</p>
+      <code>
+        21: if ! command -v #NEW_COMMAND &> /dev/null; then
+        37: ln -s $TARGET_DIR/paraview ~/bin/#NEW_COMMAND
+        38: chmod +x ~/bin/#NEW_COMMAND
+        40: TARGET_DIR=$(readlink -f ~/bin/#NEW_COMMAND)
+        41: PARAVIEW_DIR=$(dirname $(readlink -f ~/bin/#NEW_COMMAND))
+      </code>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const additionalInfo = document.getElementById('additionalInfo');
+
+        toggleButton.addEventListener('click', () => {
+            if (additionalInfo.style.display === 'none') {
+                additionalInfo.style.display = 'block';
+            } else {
+                additionalInfo.style.display = 'none';
+            }
+        });
+    </script>
+  </div>
+  <script src="../src/script.js"></script>
+  
+  
+</body>
+</html>

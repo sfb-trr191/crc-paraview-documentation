@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRC/TRR 191</title>
+  <link rel="stylesheet" type="text/css" href="../style/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@2.1.4/marked.min.js"></script>
+  <script>
+    // Define an array of terminal outputs
+    const terminalOutputs = [
+    `Mac:~ User$ cd /Applications/paraview.app/Contents/plugins/Mac
+Mac:Mac User$ mkdir my-plugin
+Mac:Mac User$ cp Path/to/plugin/my-plugin.so my-plugin/`,
+    `Mac:Mac User$ cp Path/to/lib/my-lib.so lib/`,
+    `Mac:~ User$ cd /Applications/paraview.app/Contents/plugins/Python
+Mac:Python User$ mkdir my-plugin
+Mac:Python User$ cp Path/to/plugin/my-plugin.py my-plugin/`,
+    `Mac:~ User$ cd /Applications/paraview.app/Contents/plugins/XML
+Mac:XML User$ mkdir my_xml 
+Mac:XML User$ cp Path/to/my_xml.xml my_xml/`]
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Symplectic Structures in Geometry, Algebra and Dynamics</h1>
+  </header>
+  
+  <div class="banner"></div>
+  
+  <nav>
+    <ul>
+      <li>
+        <a href="../paraview/paraview.html">Paraview</a>
+        <ul>
+          <li><a href="../paraview/linux.html">Linux</a></li>
+          <li><a href="../paraview/mac.html">Mac</a></li>
+          <li><a href="../paraview/windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="plugins.html">Plugins</a>
+        <ul>
+          <li><a href="linux.html">Linux</a></li>
+          <li><a href="mac.html">Mac</a></li>
+          <li><a href="windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../build/build.html">Build</a>
+        <ul>
+          <li><a href="../build/linux.html">Linux</a></li>
+          <li><a href="../build/mac.html">Mac</a></li>
+          <li><a href="../build/windows.html">Windows</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="content">
+    <h2>Paraview Plugins for Macintosh</h2>
+    <p>We provided a number of plugins for Mac on our <a href="https://vcgitlab.iwr.uni-heidelberg.de/lmarks/plugins"> Gitlab Repository</a> that will automatically download and update whenever you run paraview.</p>
+  </div>
+  <div class="toggle-box">
+    <button id="toggleButton">Advanced Modus</button>
+    <div id="additionalInfo">
+      <h2>Custom Plugins</h2>
+        <p>You can also intigrate your own plugins using the programm. For this you either need the binary files .so that correlate with your paraview version or intigrate python plugins .py. For the binary plugins: create a folder in the Mac plugin folder which has the same name as the plugin</p>
+        <div class="container">
+          <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+        </div>
+        <p>If your plugins require any additional libraries you can copy those into the lib folder the same way</p>
+        <div class="container">
+          <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+        </div>
+        <p>For custom python plugins exactly the same but in the folder "Python"</p>
+        <div class="container">
+          <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+        </div>
+      
+      <p>If you want to add your own VTK plugin, you need to copy the .xml file into a directory with the same name</p>
+      <div class="container">
+        <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+      </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const additionalInfo = document.getElementById('additionalInfo');
+
+        toggleButton.addEventListener('click', () => {
+            if (additionalInfo.style.display === 'none') {
+                additionalInfo.style.display = 'block';
+            } else {
+                additionalInfo.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="../src/script.js"></script>
+  </div>
+    
+    
+</div>
+</body>
+</html>

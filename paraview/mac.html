@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRC/TRR 191</title>
+  <link rel="stylesheet" type="text/css" href="../style/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@2.1.4/marked.min.js"></script>
+  <script>
+    // Define an array of terminal outputs
+    const terminalOutputs = [
+    `Mac:~ User$ git --version`,
+    `Mac:~ User$ git clone --branch Macintosh https://vcgitlab.iwr.uni-heidelberg.de/lmarks/sfb-paraview.git
+Mac:~ User$ mv sfb-paraview/paraview.app /Applications
+Mac:~ User$ rm -R sfb-paraview/ `,
+    `Mac:~ User$ cd /Applications/paraview.app/Contents/
+Mac:Contents User$ git clone --branch Linux https://vcgitlab.iwr.uni-heidelberg.de/lmarks/sfb-paraview.git
+Mac:Contents User$ mv sfb-paraview/* .
+Mac:Contents User$ rm -R sfb-paraview/ 
+Mac:Contents User$ ./paraview`]
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Symplectic Structures in Geometry, Algebra and Dynamics</h1>
+  </header>
+  
+  <div class="banner"></div>
+  
+  <nav>
+    <ul>
+      <li>
+        <a href="paraview.html">Paraview</a>
+        <ul>
+          <li><a href="linux.html">Linux</a></li>
+          <li><a href="#">Mac</a></li>
+          <li><a href="windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../plugins/plugins.html">Plugins</a>
+        <ul>
+          <li><a href="../plugins/linux.html">Linux</a></li>
+          <li><a href="../plugins/mac.html">Mac</a></li>
+          <li><a href="../plugins/windows.html">Windows</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="../build/build.html">Build</a>
+        <ul>
+          <li><a href="../build/linux.html">Linux</a></li>
+          <li><a href="../build/mac.html">Mac</a></li>
+          <li><a href="../build/windows.html">Windows</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="content">
+      <h2>Paraview for Macintosh</h2>
+      <p>This is a programm that automatically installs a desired version on paraview on your Mac computer. The programm also automatically checks for updates on new <a href="../plugins/linux.html"> plugins</a> provided by us for the Mac version of paraview.</p>
+      <h3>Video Tutorial</h3>
+      <video controls width="640" height="360">
+        <source src="../images/tutorial_mac.mov" type="video/quicktime">
+        Your browser does not support the video tag.
+      </video>
+      <h3>Requirments</h3>
+        <p>To run the programm successfully you need to install a few additional programms</p>
+        <ul>
+          <li><a href="https://git-scm.com/download/mac">GIT</a></li>
+        </ul>
+        <p>This can be done by opening the Application Terminal and running the command</p>
+        <div class="container">
+          <pre id="dynamic-box-0" class="terminal"><!-- Terminal output will be placed here --></pre>
+        </div>
+      <h3>Installation</h3>
+      <p>To install the programm for Mac you first need to clone the paraview application preferably using git and move it in the Applicaton folder</p>
+      <div class="container">
+        <pre id="dynamic-box-1" class="terminal"><!-- Terminal output will be placed here --></pre>
+      </div>
+      <p>To delete the repository, you might need to answer with a 'y' and enter</p>
+      <p>Now open the program Automator and open the application "paraview". Now export the Shell-Skript using 'export' and save the program under programs with the same name "paraview", replace the existing file.</p>
+      <p>Install the paraview version downloader by cloning the linux repository</p>
+      <div class="container">
+        <pre id="dynamic-box-2" class="terminal"><!-- Terminal output will be placed here --></pre>
+      </div>
+      <p>Read the Terms and Agrees for Paraview, after that a windows pops up with the paraview drive, just close the window, the script will automatically install Paraview at the right position. When the script is finished you should be able to run paraview by executing the Paraview Applicaiton in Applications.</p>
+      <p>This might take a while as it is the first time Paraview is executed</p>
+      <h3>Uninstall</h3>
+      <p>TODO!!!</p>
+      <script src="../src/script.js"></script>
+    </div>
+</body>
+</html>
