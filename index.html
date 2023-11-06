@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>sfb-trr191</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="layout_overview.css" rel="stylesheet" type="text/css" />
+    <link href="entry.css" rel="stylesheet" type="text/css" />
+    <script src="bundle.js" type="text/javascript"> </script>
+    
+</head>
+
+<body>
+    <div class="grid">
+        <div id="grid_item_banner" class="grid_item">
+            <a href="http://www.mi.uni-koeln.de/CRC-TRR191/index.php"><img class="banner_image" id="banner_image" src="sfb_banner_with_full_text.png"></a>           
+            <div class="tabs">
+                <div class="tab_active">
+                    <a href="index.html">Installer </a>
+                </div>
+                <div class="tab_inactive">
+                    <a href="plugins.html">Plugins</a>
+                </div>
+                <div class="tab_inactive">
+                    <a href="gallery.html">Gallery</a>
+                </div>
+            </div>
+        </div>
+        <div id="grid_item_content" class="grid_item">
+            <h2>
+                Windows
+            </h2>
+            <div class="entry_main_container">
+                <div class="entry_text_wrapper">
+                    <a class="entry_title" href="project/paraview-installer.html"></a>
+                    <div class="description">
+                        <p>This is a programm that automatically installs a desired version on paraview on your Windows computer. The programm also automatically checks for updates on new <a href="../plugins/linux.html"> plugins</a> provided by us for the Windows version of paraview.</p>
+                        <h3>Video Tutorial</h3>
+                            <p>Coming Soon</p>
+                        <h3>Requirments</h3>
+                        <p>To run the programm successfully you need to install a few additional programms</p>
+                        <ul>
+                        <li><a href="https://git-scm.com/download/win">GIT</a></li>
+                        <li><a href="https://www.python.org/downloads/windows/">Python</a></li>
+                        </ul>
+                        <h3>Installation</h3>
+                        <p>Download the git repository <a href="https://github.com/sfb-trr191/crc-paraview/tree/Windows">Paraview-Windows</a> and place it somewhere on your computer. Execute the paraview.bat script inside the project and follow the instructions on the command shell. The download and installation may take a while depending on your internet connection. Now create a link to the paraview.bat script, you should be able to run paraview.</p>
+
+                    </div>
+                </div>
+            </div>
+            <h2>
+                Macintosh
+            </h2>
+            <div class="entry_main_container">
+                <div class="entry_text_wrapper">
+                    <a class="entry_title" href="project/paraview-installer.html"></a>
+                    <div class="description">
+                        <p>This is a programm that automatically installs a desired version on paraview on your Mac computer. The programm also automatically checks for updates on new <a href="../plugins/linux.html"> plugins</a> provided by us for the Mac version of paraview.</p>
+                        <h3>Video Tutorial</h3>
+                        <p>Coming Soon</p>
+                        <h3>Requirments</h3>
+                            <p>To run the programm successfully you need to install a few additional programms</p>
+                            <ul>
+                            <li><a href="https://git-scm.com/download/mac">GIT</a></li>
+                            </ul>
+                            <p>This can be done by opening the Application Terminal and running the command</p>
+                            <div class="custom-terminal"  style="height: 15px;">
+                                Mac:~ User$ git --version
+                            </div>
+                        <h3>Installation</h3>
+                        <p>To install the programm for Mac you first need to clone the paraview application from <a href="https://github.com/sfb-trr191/crc-paraview/tree/Macintosh">ParaView-Mac</a> preferably using git and move it in the Applicaton folder</p>
+                        <div class="custom-terminal"  style="height: 60px;">
+                            Mac:~ User$ git clone --branch Macintosh https://vcgitlab.iwr.uni-heidelberg.de/lmarks/sfb-paraview.git <br>
+                            Mac:~ User$ mv crc-paraview/paraview.app /Applications <br>
+                            Mac:~ User$ rm -R crc-paraview/
+                        </div>
+                        <p>To delete the repository, you might need to answer with a 'y' and enter</p>
+                        <p>Now open the program Automator and open the application "paraview". Now export the Shell-Skript using 'export' and save the program under programs with the same name "paraview", replace the existing file.</p>
+                        <p>Install the paraview version downloader by cloning the linux repository</p>
+                        <div class="custom-terminal"  style="height: 90px;">
+                            Mac:~ User$ cd /Applications/paraview.app/Contents/ <br>
+                            Mac:Contents User$ git clone --branch Linux https://vcgitlab.iwr.uni-heidelberg.de/lmarks/sfb-paraview.git <br>
+                            Mac:Contents User$ mv crc-paraview/* . <br>
+                            Mac:Contents User$ rm -R crc-paraview/  <br>
+                            Mac:Contents User$ ./paraview
+                        </div>
+                        <p>Read the Terms and Agrees for Paraview, after that a windows pops up with the paraview drive, just close the window, the script will automatically install Paraview at the right position. When the script is finished you should be able to run paraview by executing the Paraview Applicaiton in Applications.</p>
+                        <p>This might take a while as it is the first time Paraview is executed</p>
+                        <h3>Uninstall</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                </div>
+            </div>
+            <h2>
+                Linux
+            </h2>
+            <div class="entry_main_container">
+                <div class="entry_text_wrapper">
+                    <a class="entry_title" href="project/paraview-installer.html"></a>
+                    <div class="description">
+                        <p>This is a programm that automatically installs a desired version on paraview on your linux computer and generates a bash command to run it from terminal. The programm also automatically checks for updates on new <a href="../plugins/linux.html"> plugins</a> provided by us for the linux version of paraview.</p>
+                        <h3>Video Tutorial</h3>
+                            <p>Coming Soon</p>
+                        <h3>Requirments</h3>
+                            <p>To use the paraview script you first need to install necessary packages on you linux system, otherwise the script will not run</p>
+                        <ul>
+                            <li>curl</li>
+                            <li>gawk</li>
+                            <li>GIT</li>
+                        </ul>
+                        <p>you can install these packages on Ubuntu by using the terminal command</p>
+                        <div class="custom-terminal"  style="height: 15px;">
+                            user@computer:~$ sudo apt install curl gawk git -y
+                        </div>
+                        <h3>Installation</h3>
+                
+                        <p>Download the git repository <a href="https://github.com/sfb-trr191/crc-paraview/tree/Linux">ParaView-Linux</a> by using the command in a designated folder (we recommend to generate a programms folder)</p>
+
+                        <div class="custom-terminal"  style="height: 60px;">
+                            user@computer:~$ mkdir programms <br>                                    
+                            user@computer:~$ cd programms <br>
+                            user@computer:~/programms$ git clone --branch Linux https://vcgitlab.iwr.uni-heidelberg.de/lmarks/sfb-paraview.git
+                        </div>
+                        
+                        <p>When the git project is downloaded, open the folder and execute the bash script. Follow the instructions to install Paraview on your system. We recommend using the paraview version MPI 5.11.1. This process might take a while to download all the necessary packages depending on your internet connection.</p>
+                        <div class="custom-terminal"  style="height: 30px;">
+                            user@computer:~$ cd crc-paraview <br>
+                            user@computer:~/programms/crc-paraview$ ./paraview
+                        </div>
+                        <p>After you installed paraview successfully, you should be able to run paraview from anywhere by running the command</p>
+                        <div class="custom-terminal"  style="height: 15px;">
+                            user@computer:~$ paraview
+                        </div>
+                        <h3>
+                            Uninstall
+                        </h3>
+                        <p>If you want another version of paraview you can just duplicate the project and change the command name like mentioned earlier, or uninstall paraview by running the following script. Please note if you want to delete paraview completely, run the uninstall script first before deleting the project folder.</p>
+                        <div class="custom-terminal"  style="height: 15px;">
+                            user@computer:~/programms/crc-paraview$ ./uninstall
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
